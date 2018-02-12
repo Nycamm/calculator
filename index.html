@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
+
+  <body>
+
+    <div class="grid">
+      <div class="display">test</div>
+      <div class="numPad">
+        <div class="num7">7</div>
+        <div class="num8">8</div>
+        <div class="num9">9</div>
+        <div class="num4">4</div>
+        <div class="num5">5</div>
+        <div class="num6">6</div>
+        <div class="num1">1</div>
+        <div class="num2">2</div>
+        <div class="num3">3</div>
+        <div class="nump">.</div>
+        <div class="num0">0</div>
+        <div class="nume">=</div>
+      </div>
+      <div class="operations">
+        <div class="operators"></div>
+        <div class="operators"></div>
+        <div class="operators"></div>
+        <div class="operators"></div>
+        <div class="operators"></div>
+      </div>
+    </div>
+
+    <script>
+    function add(a, b) {
+      return a + b;
+    };
+
+    function subtract(a, b) {
+      return a - b;
+    };
+
+    function multiply(a, b) {
+      return a * b;
+    };
+
+    function divide(a, b) {
+      return a / b;
+    };
+
+    function operate(operator, a, b) {
+      return operator == "+" ? add(a, b) : operator == "-" ? subtract(a, b) :
+      operator == "*" ? multiply(a, b) : operator == "/" ? divide(a, b) : "error";
+    };
+
+    </script>
+  </body>
+</html>
