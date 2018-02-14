@@ -32,14 +32,20 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   background: #28536C;
-  justify-items: center;
-  align-items: center;
+}
+
+.num {
+  text-align: center;
+  line-height: 100px;
 }
 
 .operators {
   display: grid;
   grid-template-columns: 1fr;
   background: #113951;
-  justify-items: center;
-  align-items: center;
+}
+
+.op {
+  text-align: center;
+  line-height: 80px;
 }

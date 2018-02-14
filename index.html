@@ -11,26 +11,26 @@
       <div class="displayOne">2 + 2 =</div>
       <div class="displayTwo">4</div>
       <div class="buttons">
-        <div class="numPad">
-          <div class="">7</div>
-          <div class="">8</div>
-          <div class="">9</div>
-          <div class="">4</div>
-          <div class="">5</div>
-          <div class="">6</div>
-          <div class="">1</div>
-          <div class="">2</div>
-          <div class="">3</div>
-          <div class="">.</div>
-          <div class="">0</div>
-          <div class="">=</div>
+        <div class="numPad" id="numPad">
+          <div class="num" id="num7">7</div>
+          <div class="num" id="num8">8</div>
+          <div class="num" id="num9">9</div>
+          <div class="num" id="num4">4</div>
+          <div class="num" id="num5">5</div>
+          <div class="num" id="num6">6</div>
+          <div class="num" id="num1">1</div>
+          <div class="num" id="num2">2</div>
+          <div class="num" id="num3">3</div>
+          <div class="num" id="numd">.</div>
+          <div class="num" id="num0">0</div>
+          <div class="num" id="nume">=</div>
         </div>
-        <div class="operators">
-          <div class="">DEL</div>
-          <div class="">/</div>
-          <div class="">*</div>
-          <div class="">-</div>
-          <div class="">+</div>
+        <div class="operators" id="operators">
+          <div class="op" id="del">DEL</div>
+          <div class="op" id="divide">/</div>
+          <div class="op" id="multiply">*</div>
+          <div class="op" id="subtract">-</div>
+          <div class="op" id="add">+</div>
         </div>
       </div>
     </div>
@@ -57,6 +57,14 @@
       return operator == "+" ? add(a, b) : operator == "-" ? subtract(a, b) :
       operator == "*" ? multiply(a, b) : operator == "/" ? divide(a, b) : "error";
     };
+
+    document.getElementById("numPad").addEventListener("click", (e) => {
+      console.log(e.target.innerText);
+    });
+
+    document.getElementById("operators").addEventListener("click", (e) => {
+      console.log(e.target.innerText);
+    });
 
     </script>
   </body>
