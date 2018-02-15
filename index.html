@@ -9,7 +9,7 @@
 
     <div class="grid">
       <div class="displayOne">2 + 2 =</div>
-      <div class="displayTwo">4</div>
+      <div class="displayTwo" id="displayTwo"></div>
       <div class="buttons">
         <div class="numPad" id="numPad">
           <div class="num" id="num7">7</div>
@@ -58,13 +58,31 @@
       operator == "*" ? multiply(a, b) : operator == "/" ? divide(a, b) : "error";
     };
 
+    let dispTwoCont = "";
+
+    function numToDisp(x) {
+      if (dispTwoCont.length < 10) {
+        dispTwoCont += x;
+        document.getElementById("displayTwo").innerText = dispTwoCont;
+      };
+    };
+
     document.getElementById("numPad").addEventListener("click", (e) => {
-      console.log(e.target.innerText);
+      let dispNum = e.target.innerText;
+      if (dispNum == ".") {
+        if (dispTwoCont.includes(".") == false) {
+          numToDisp(dispNum);
+        }
+      } else if (dispNum != "=") {
+        numToDisp(dispNum);
+      };
     });
 
     document.getElementById("operators").addEventListener("click", (e) => {
       console.log(e.target.innerText);
     });
+
+
 
     </script>
   </body>
