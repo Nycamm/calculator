@@ -73,13 +73,24 @@
         if (dispTwoCont.includes(".") == false) {
           numToDisp(dispNum);
         }
-      } else if (dispNum != "=") {
+      } else if (dispNum == "=") {
+        let operateArr = dispTwoCont.split("");
+        for (i = 0; i < operateArr.length; i++) {
+
+        }
+      } else {
         numToDisp(dispNum);
-      };
+      }
     });
 
     document.getElementById("operators").addEventListener("click", (e) => {
-      console.log(e.target.innerText);
+      if (e.target.innerText == "DEL") {
+        l = dispTwoCont.length - 1;
+        dispTwoCont = dispTwoCont.slice(0, l);
+        document.getElementById("displayTwo").innerText = dispTwoCont;
+      } else {
+        numToDisp(e.target.innerText);
+      }
     });
 
 
