@@ -38,7 +38,7 @@
     <script>
     // http://paletton.com/#uid=13u0u0kllllaFw0g0qFqFg0w0aF color palet
     function add(a, b) {
-      return a + b;
+      return (+a + +b);
     };
 
     function subtract(a, b) {
@@ -50,7 +50,11 @@
     };
 
     function divide(a, b) {
-      return a / b;
+      if (b == 0){
+        return "OOPS";
+      } else {
+        return a / b;
+      }
     };
 
     function operate(operator, a, b) {
@@ -58,25 +62,35 @@
       operator == "*" ? multiply(a, b) : operator == "/" ? divide(a, b) : "error";
     };
 
-    let dispTwoCont = "";
+    let problem = [""];
+    let solution;
+    let problemIndex = (problem.length - 1);
 
     function numToDisp(x) {
-      if (dispTwoCont.length < 10) {
-        dispTwoCont += x;
-        document.getElementById("displayTwo").innerText = dispTwoCont;
+      if (problem.join("").length < 10) {
+        problem[problemIndex] += x;
+        document.getElementById("displayTwo").innerText = problem.join("");
       };
     };
 
     document.getElementById("numPad").addEventListener("click", (e) => {
       let dispNum = e.target.innerText;
       if (dispNum == ".") {
-        if (dispTwoCont.includes(".") == false) {
+        if (problem.join("").includes(".") == false) {
           numToDisp(dispNum);
         }
-      } else if (dispNum == "=") {
-        let operateArr = dispTwoCont.split("");
-        for (i = 0; i < operateArr.length; i++) {
-
+      } else if (dispNum == "="){
+        if(problem.includes("*") == true) {
+          let index = problem.lastIndexOf("*");
+          let solve = operate("*", problem[index - 1], problem[index + 1]);
+          let sliceOne = [""];
+          if (index > 1) {
+            sliceOne[0] = problem.slice(0, index - 2);
+          } 
+          let sliceTwo = [solve];
+          let sliceThree = problem.slice(index + 2);
+          solution = sliceOne.concat(sliceTwo, sliceThree);
+          document.getElementById("displayTwo").innerText = solution.join("");
         }
       } else {
         numToDisp(dispNum);
@@ -85,11 +99,23 @@
 
     document.getElementById("operators").addEventListener("click", (e) => {
       if (e.target.innerText == "DEL") {
-        l = dispTwoCont.length - 1;
-        dispTwoCont = dispTwoCont.slice(0, l);
-        document.getElementById("displayTwo").innerText = dispTwoCont;
+        if ((problem[problemIndex].length > 1) || (problemIndex == 0)) {
+          l = problem[problemIndex].length - 1;
+          problem[problemIndex] = problem[problemIndex].slice(0, l);
+          document.getElementById("displayTwo").innerText = problem.join("");
+        } else {
+          problem = problem.slice(0, (problemIndex - 1));
+          problemIndex = (problem.length - 1);
+          document.getElementById("displayTwo").innerText = problem.join("");
+        }
       } else {
-        numToDisp(e.target.innerText);
+        if (problem[problemIndex].length != 0) {
+          problem.push("");
+          problemIndex = (problem.length - 1);
+          numToDisp(e.target.innerText);
+          problem.push("");
+          problemIndex = (problem.length - 1);
+        }
       }
     });
 
