@@ -49,3 +49,19 @@
   text-align: center;
   line-height: 80px;
 }
+
+.num, .op {
+  cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  transition: background-color .4s ease, opacity .4s ease;
+}
+
+.num:hover, .op:hover {
+  background-color: #6F8FA2;
+  opacity: .7;
+}
